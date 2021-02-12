@@ -56,3 +56,26 @@ END
 EXEC dbo.spOrderPayment_GetAmountPaid -- amount goes here;
 
 
+
+USE CATERING;
+
+DECLARE @DeliItemCount INT;
+DECLARE @BakeryItemCount INT;
+DECLARE @BBQItemCount INT;
+DECLARE @ProduceItemCount INT;
+DECLARE @SalBarItemCount INT;
+
+SET @DeliItemCount = (SELECT COUNT(DepartmentID) FROM ITEMS WHERE DepartmentID = 'DELI')
+SET @BakeryItemCount = (SELECT COUNT(DepartmentID) FROM ITEMS WHERE DepartmentID = 'BAK')
+SET @BBQItemCount = (SELECT COUNT(DepartmentID) FROM ITEMS WHERE DepartmentID = 'BBQ')
+SET @ProduceItemCount = (SELECT COUNT(DepartmentID) FROM ITEMS WHERE DepartmentID = 'PROD')
+SET @SalBarItemCount = (SELECT COUNT(DepartmentID) FROM ITEMS WHERE DepartmentID = 'SALBAR')
+
+
+
+
+PRINT 'Deli Item Count: ' + CAST(@DeliItemCount AS VARCHAR)
+PRINT 'Bakery Item Count: ' + CAST(@BakeryItemCount AS VARCHAR)
+PRINT 'BBQ Item Count: ' + CAST(@BBQItemCount AS VARCHAR)
+PRINT 'Produce Item Count: ' + CAST(@ProduceItemCount AS VARCHAR)
+PRINT 'Salad Bar Item Count: ' + CAST(@SalBarItemCount AS VARCHAR)
