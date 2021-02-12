@@ -75,6 +75,32 @@ What is a Set?
     Although a table is represented as columns and rows, to understand how to query data you need to picture a table as a set.
     <ul>
         <li>In SQL, you interact with the whole set at once. That is, when fetching data from a set, the database engine won't go through each row sequentially, instead, it will query the whole table at once</li>
-        <li>SQL is a declatative language</li>
+        <li>SQL is a declatative language. Therefore, when interacting with database via queries, you will tell the database what information you want to recieve and not where to fetch it.</li>
+        <li>Sorting is not guaranteed in SQL which is why you would be required to specify a sorting order</li>
     </ul>
 </ul>
+
+## Elements of a Select Statement
+A Select statement is used to fetch data in SQL. It can operate both with and without a from clause. A select statement with a from clause will fetch data from a table, whereas a select statement without a from clause will fetch data from an "in-memory" or "imaginary" table.
+
+<ul>
+    <li>SELECT: specifies to which column to return</li>
+    <li>FROM: specifies from which table to fetch data</li>
+    <li>WHERE: specifies how to filter the data</li>
+    <li>GROUP BY: arranges the data to be returned by groups</li>
+    <li>HAVING: filter groups by predicates</li>
+    <li>ORDER BY: sorts the results</li>
+</ul>
+In SQL, the order in which you write a statement is not necessarily the order in which the database engine will evaluate and process it. Database engines may optimize their execution of a query, providing the accuracy of the result is retained. As a result, unless you learn the logical order of operations, you may find both conceptual and practical obstacles to writing your queries.
+<p></p>
+<p>SQL Server Executes queries in the following order</p>
+<ul>
+    <li>FROM</li>
+    <li>WHERE</li>
+    <li>GROUP BY</li>
+    <li>HAVING</li>
+    <li>SELECT</li>
+    <li>ORDER BY</li>
+</ul>
+
+The FROM clause is evaluated first to provide the source rows for the rest of the statement. Then, the WHERE clause will be evaluated, filtering the rows from the source table that match a predicate. The filtered data set is passed to the next step. Finally, the SELECT clause will execute, determining which columns will appear in the query results.
